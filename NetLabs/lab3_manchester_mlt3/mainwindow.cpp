@@ -3,7 +3,7 @@
  *
  *  Created on: 12.09.2010
  *      Author: brunql
- *     Project: Lab2. 4B-5B codes.
+ *     Project: Lab3. Manchester and mlt3 codes.
  */
 
 #include "mainwindow.h"

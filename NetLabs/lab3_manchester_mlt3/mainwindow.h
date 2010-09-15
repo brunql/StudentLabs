@@ -1,4 +1,10 @@
-
+/*
+ * mainwindow.h
+ *
+ *  Created on: 12.09.2010
+ *      Author: brunql
+ *     Project: Lab3. Manchester and mlt3 codes.
+ */
 
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
