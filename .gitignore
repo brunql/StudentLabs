@@ -1,0 +1,8 @@
+#
+# Git ignore files for Qt4 based projects:
+#
+build/
+Makefile
+*.pro.user
+*.o
+moc_*
