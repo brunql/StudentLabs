@@ -34,7 +34,7 @@ FSM_TableModel::FSM_TableModel(QObject *parent) : QAbstractTableModel(parent)
     lastInputBitFSM = 0;
 
     // TODO: Придумать структуру удобную для хранения КА
-    test.append(new FsmCmdOut(0,1));
+//    test.append(FsmCmdOut(0,1));
 }
 
 int FSM_TableModel::rowCount(const QModelIndex &parent) const

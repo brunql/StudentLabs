@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-TARGET = lab4_modem
+TARGET = lab5_modem
 TEMPLATE = app
 
 

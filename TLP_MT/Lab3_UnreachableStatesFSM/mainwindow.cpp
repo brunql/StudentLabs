@@ -44,6 +44,10 @@ void MainWindow::changeEvent(QEvent *e)
     }
 }
 
+void MainWindow::showEvent(QShowEvent *)
+{
+    resizeEvent(0);
+}
 
 void MainWindow::resizeEvent(QResizeEvent *)
 {

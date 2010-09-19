@@ -3,7 +3,7 @@
  *
  *  Created on: 15.09.2010
  *      Author: brunql
- *     Project: Lab4. Modem: 4B code -> FMO code -> Phase modulation
+ *     Project: Lab5. Modem: 4B code -> FMO code -> Phase modulation
  */
 
 #ifndef MAINWINDOW_H

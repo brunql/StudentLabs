@@ -25,6 +25,7 @@ public:
 protected:
     void changeEvent(QEvent *e);
     void resizeEvent(QResizeEvent *);
+    void showEvent(QShowEvent *);
 
 private slots:
     void lineInputEditing();

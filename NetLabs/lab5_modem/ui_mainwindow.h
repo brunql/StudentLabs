@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Wed Sep 15 16:12:08 2010
+** Created: Sun Sep 19 13:48:37 2010
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -140,7 +140,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Lab #4 - \320\222\320\270\320\264\321\213 \320\274\320\276\320\264\321\203\320\273\321\217\321\206\320\270\320\270 \320\274\320\276\320\264\320\265\320\274\320\276\320\262", 0, QApplication::UnicodeUTF8));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Lab #5 - \320\222\320\270\320\264\321\213 \320\274\320\276\320\264\321\203\320\273\321\217\321\206\320\270\320\270 \320\274\320\276\320\264\320\265\320\274\320\276\320\262", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("MainWindow", "\320\222\320\260\321\200\320\270\320\260\320\275\321\202 3. \320\221\320\270\320\275\320\260\321\200\320\275\321\213\320\271 \320\272\320\276\320\264 (4\320\222) \320\277\320\265\321\200\320\265\320\262\320\265\321\201\321\202\320\270 \320\262 F\320\234\320\236 \320\272\320\276\320\264, \320\267\320\260\321\202\320\265\320\274 \320\262  \320\244\320\234 \320\274\320\276\320\264\320\265\320\274", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("MainWindow", "\320\246\320\270\321\204\321\200\320\276\320\262\321\213\320\265 \320\264\320\260\320\275\320\275\321\213\320\265:", 0, QApplication::UnicodeUTF8));
         lineEdit->setText(QApplication::translate("MainWindow", "211191", 0, QApplication::UnicodeUTF8));
