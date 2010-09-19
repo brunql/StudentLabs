@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sun Sep 19 13:59:32 2010
+** Created: Sun Sep 19 14:55:46 2010
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -21,7 +21,6 @@
 #include <QtGui/QLineEdit>
 #include <QtGui/QMainWindow>
 #include <QtGui/QPlainTextEdit>
-#include <QtGui/QSpacerItem>
 #include <QtGui/QStatusBar>
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
@@ -32,16 +31,18 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QVBoxLayout *verticalLayout_2;
+    QVBoxLayout *verticalLayout_3;
     QLabel *label;
     QHBoxLayout *horizontalLayout;
     QLabel *label_2;
     QLineEdit *lineEdit;
     QHBoxLayout *horizontalLayout_2;
-    QVBoxLayout *verticalLayout;
+    QVBoxLayout *verticalLayout_2;
     QLabel *label_3;
     QPlainTextEdit *textEdit4B;
-    QSpacerItem *horizontalSpacer;
+    QVBoxLayout *verticalLayout;
+    QLabel *label_4;
+    QPlainTextEdit *textEdit5B;
     QGraphicsView *graphicsView;
     QStatusBar *statusBar;
 
@@ -49,18 +50,18 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(918, 481);
+        MainWindow->resize(521, 459);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
-        verticalLayout_2 = new QVBoxLayout(centralWidget);
-        verticalLayout_2->setSpacing(6);
-        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_3 = new QVBoxLayout(centralWidget);
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         label = new QLabel(centralWidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setWordWrap(true);
 
-        verticalLayout_2->addWidget(label);
+        verticalLayout_3->addWidget(label);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
@@ -76,14 +77,14 @@ public:
         horizontalLayout->addWidget(lineEdit);
 
 
-        verticalLayout_2->addLayout(horizontalLayout);
+        verticalLayout_3->addLayout(horizontalLayout);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setSpacing(6);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
@@ -93,11 +94,11 @@ public:
         label_3->setSizePolicy(sizePolicy);
         label_3->setBaseSize(QSize(0, 0));
 
-        verticalLayout->addWidget(label_3);
+        verticalLayout_2->addWidget(label_3);
 
         textEdit4B = new QPlainTextEdit(centralWidget);
         textEdit4B->setObjectName(QString::fromUtf8("textEdit4B"));
-        QSizePolicy sizePolicy1(QSizePolicy::Maximum, QSizePolicy::Expanding);
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(textEdit4B->sizePolicy().hasHeightForWidth());
@@ -105,28 +106,44 @@ public:
         textEdit4B->setBaseSize(QSize(0, 0));
         textEdit4B->setReadOnly(true);
 
-        verticalLayout->addWidget(textEdit4B);
+        verticalLayout_2->addWidget(textEdit4B);
 
-        horizontalSpacer = new QSpacerItem(100, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
-        verticalLayout->addItem(horizontalSpacer);
+        horizontalLayout_2->addLayout(verticalLayout_2);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(6);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        label_4 = new QLabel(centralWidget);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        sizePolicy.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
+        label_4->setSizePolicy(sizePolicy);
+        label_4->setBaseSize(QSize(0, 0));
+
+        verticalLayout->addWidget(label_4);
+
+        textEdit5B = new QPlainTextEdit(centralWidget);
+        textEdit5B->setObjectName(QString::fromUtf8("textEdit5B"));
+        sizePolicy1.setHeightForWidth(textEdit5B->sizePolicy().hasHeightForWidth());
+        textEdit5B->setSizePolicy(sizePolicy1);
+        textEdit5B->setBaseSize(QSize(0, 0));
+        textEdit5B->setReadOnly(true);
+
+        verticalLayout->addWidget(textEdit5B);
 
 
         horizontalLayout_2->addLayout(verticalLayout);
 
+
+        verticalLayout_3->addLayout(horizontalLayout_2);
+
         graphicsView = new QGraphicsView(centralWidget);
         graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
-        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(graphicsView->sizePolicy().hasHeightForWidth());
-        graphicsView->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(graphicsView->sizePolicy().hasHeightForWidth());
+        graphicsView->setSizePolicy(sizePolicy1);
         graphicsView->setMinimumSize(QSize(0, 0));
 
-        horizontalLayout_2->addWidget(graphicsView);
-
-
-        verticalLayout_2->addLayout(horizontalLayout_2);
+        verticalLayout_3->addWidget(graphicsView);
 
         MainWindow->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(MainWindow);
@@ -145,6 +162,7 @@ public:
         label_2->setText(QApplication::translate("MainWindow", "\320\246\320\270\321\204\321\200\320\276\320\262\321\213\320\265 \320\264\320\260\320\275\320\275\321\213\320\265:", 0, QApplication::UnicodeUTF8));
         lineEdit->setText(QApplication::translate("MainWindow", "211191", 0, QApplication::UnicodeUTF8));
         label_3->setText(QApplication::translate("MainWindow", "4B-\320\272\320\276\320\264:", 0, QApplication::UnicodeUTF8));
+        label_4->setText(QApplication::translate("MainWindow", "5B-\320\272\320\276\320\264:", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
