@@ -90,6 +90,7 @@ void MainWindow::lineEdit_Changing()
     // Drawing
     //
     ui->graphicsView->scene()->clear();
+    QPen redPen2(Qt::red, 2);
 
 //    QGraphicsTextItem *text = ui->graphicsView->scene()->addText("4B");
 //    text->setPos(-35, -35);
@@ -115,9 +116,9 @@ void MainWindow::lineEdit_Changing()
            }
            if(drawVerticalLine){
                drawVerticalLine = false;
-               ui->graphicsView->scene()->addLine(x, 0 -diff, x, -SCALE_Y -diff, QPen(Qt::red));
+               ui->graphicsView->scene()->addLine(x, 0 -diff, x, -SCALE_Y -diff, redPen2);
            }
-           ui->graphicsView->scene()->addLine(x, -y -diff, x + SCALE_X, -y -diff, QPen(Qt::red));
+           ui->graphicsView->scene()->addLine(x, -y -diff, x + SCALE_X, -y -diff, redPen2);
            x += SCALE_X;
        }
     }
@@ -139,24 +140,24 @@ void MainWindow::lineEdit_Changing()
                     codesFMOList.append(false);
                     codesFMOList.append(false);
                 }
-                ui->graphicsView->scene()->addLine(x, -y, x + SCALE_X, -y, QPen(Qt::red));
+                ui->graphicsView->scene()->addLine(x, -y, x + SCALE_X, -y, redPen2);
             }else{
                 if(y == 0){
                     codesFMOList.append(true);
                     codesFMOList.append(false);
-                    ui->graphicsView->scene()->addLine(x,             -SCALE_Y, x + SCALE_X/2, -SCALE_Y, QPen(Qt::red));
-                    ui->graphicsView->scene()->addLine(x + SCALE_X/2, -SCALE_Y, x + SCALE_X/2,  0,       QPen(Qt::red));
-                    ui->graphicsView->scene()->addLine(x + SCALE_X/2,  0,       x + SCALE_X,    0,       QPen(Qt::red));
+                    ui->graphicsView->scene()->addLine(x,             -SCALE_Y, x + SCALE_X/2, -SCALE_Y, redPen2);
+                    ui->graphicsView->scene()->addLine(x + SCALE_X/2, -SCALE_Y, x + SCALE_X/2,  0,       redPen2);
+                    ui->graphicsView->scene()->addLine(x + SCALE_X/2,  0,       x + SCALE_X,    0,       redPen2);
                 }else{
                     codesFMOList.append(false);
                     codesFMOList.append(true);
-                    ui->graphicsView->scene()->addLine(x,             0,        x + SCALE_X/2, 0,        QPen(Qt::red));
-                    ui->graphicsView->scene()->addLine(x + SCALE_X/2, 0,        x + SCALE_X/2, -SCALE_Y, QPen(Qt::red));
-                    ui->graphicsView->scene()->addLine(x + SCALE_X/2, -SCALE_Y, x+SCALE_X,     -SCALE_Y, QPen(Qt::red));
+                    ui->graphicsView->scene()->addLine(x,             0,        x + SCALE_X/2, 0,        redPen2);
+                    ui->graphicsView->scene()->addLine(x + SCALE_X/2, 0,        x + SCALE_X/2, -SCALE_Y, redPen2);
+                    ui->graphicsView->scene()->addLine(x + SCALE_X/2, -SCALE_Y, x+SCALE_X,     -SCALE_Y, redPen2);
                 }
             }
             // Drawing vertical line:
-            ui->graphicsView->scene()->addLine(x, 0, x, -SCALE_Y, QPen(Qt::red));
+            ui->graphicsView->scene()->addLine(x, 0, x, -SCALE_Y, redPen2);
 
             x += SCALE_X;
         }

@@ -10,7 +10,7 @@
 #include "ui_mainwindow.h"
 #include "QtGui"
 
-#define SCALE_X   60
+#define SCALE_X   80
 #define SCALE_Y   60
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -90,6 +90,7 @@ void MainWindow::lineEdit_Changing()
     // Drawing
     //
     ui->graphicsView->scene()->clear();
+    QPen redPen2(Qt::red, 2);
 
 //    QGraphicsTextItem *text = ui->graphicsView->scene()->addText("4B");
 //    text->setPos(-35, -35);
@@ -115,9 +116,9 @@ void MainWindow::lineEdit_Changing()
            }
            if(drawVerticalLine){
                drawVerticalLine = false;
-               ui->graphicsView->scene()->addLine(x, 0 -diff, x, -SCALE_Y -diff, QPen(Qt::red));
+               ui->graphicsView->scene()->addLine(x, 0 -diff, x, -SCALE_Y -diff, redPen2);
            }
-           ui->graphicsView->scene()->addLine(x, -y -diff, x + SCALE_X, -y -diff, QPen(Qt::red));
+           ui->graphicsView->scene()->addLine(x, -y -diff, x + SCALE_X, -y -diff, redPen2);
            x += SCALE_X;
        }
     }
@@ -139,30 +140,30 @@ void MainWindow::lineEdit_Changing()
                     codesFMOList.append(false);
                     codesFMOList.append(false);
                 }
-                ui->graphicsView->scene()->addLine(x, -y, x + SCALE_X, -y, QPen(Qt::red));
+                ui->graphicsView->scene()->addLine(x, -y, x + SCALE_X, -y, redPen2);
             }else{
                 if(y == 0){
                     codesFMOList.append(true);
                     codesFMOList.append(false);
-                    ui->graphicsView->scene()->addLine(x,             -SCALE_Y, x + SCALE_X/2, -SCALE_Y, QPen(Qt::red));
-                    ui->graphicsView->scene()->addLine(x + SCALE_X/2, -SCALE_Y, x + SCALE_X/2,  0,       QPen(Qt::red));
-                    ui->graphicsView->scene()->addLine(x + SCALE_X/2,  0,       x + SCALE_X,    0,       QPen(Qt::red));
+                    ui->graphicsView->scene()->addLine(x,             -SCALE_Y, x + SCALE_X/2, -SCALE_Y, redPen2);
+                    ui->graphicsView->scene()->addLine(x + SCALE_X/2, -SCALE_Y, x + SCALE_X/2,  0,       redPen2);
+                    ui->graphicsView->scene()->addLine(x + SCALE_X/2,  0,       x + SCALE_X,    0,       redPen2);
                 }else{
                     codesFMOList.append(false);
                     codesFMOList.append(true);
-                    ui->graphicsView->scene()->addLine(x,             0,        x + SCALE_X/2, 0,        QPen(Qt::red));
-                    ui->graphicsView->scene()->addLine(x + SCALE_X/2, 0,        x + SCALE_X/2, -SCALE_Y, QPen(Qt::red));
-                    ui->graphicsView->scene()->addLine(x + SCALE_X/2, -SCALE_Y, x+SCALE_X,     -SCALE_Y, QPen(Qt::red));
+                    ui->graphicsView->scene()->addLine(x,             0,        x + SCALE_X/2, 0,        redPen2);
+                    ui->graphicsView->scene()->addLine(x + SCALE_X/2, 0,        x + SCALE_X/2, -SCALE_Y, redPen2);
+                    ui->graphicsView->scene()->addLine(x + SCALE_X/2, -SCALE_Y, x+SCALE_X,     -SCALE_Y, redPen2);
                 }
             }
             // Drawing vertical line:
-            ui->graphicsView->scene()->addLine(x, 0, x, -SCALE_Y, QPen(Qt::red));
+            ui->graphicsView->scene()->addLine(x, 0, x, -SCALE_Y, redPen2);
 
             x += SCALE_X;
         }
     }
 
-    x = y = 0;
+//    x = y = 0;
 
     // Visualize phase-modulation:
     int phase = 0;
@@ -174,16 +175,18 @@ void MainWindow::lineEdit_Changing()
     for(int x_ = 0; x_ < codesFMOList.length()/2 * SCALE_X; x_++){
         if((x_ % (SCALE_X/2)) == 0 ){
             // if bit changes then change phase
-            if(codesFMOList[i] != prev_bit){
-                phase = (phase == 0)? M_PI : 0;
-            }
-            prev_bit = codesFMOList[i];
-            if(++i > codesFMOList.length()){
-                qDebug() << "Error: i =" << i;
+            if(i >= codesFMOList.length()){
+                qDebug() << "The end: i =" << i;
                 return;
             }
+            switch(codesFMOList[i]){
+                case true: phase = 0; break;
+                case false: phase = M_PI; break;
+            }
+            i++;
         }
-        y_ = sin(x_/M_PI + phase);
+        y_ = sin(x_ / (M_PI) + phase);
+
         ui->graphicsView->scene()->addLine(x_save,
                                            y_save * SCALE_Y/2 +diff -SCALE_Y/2,
                                            x_,
