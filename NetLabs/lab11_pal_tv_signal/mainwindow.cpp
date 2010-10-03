@@ -9,8 +9,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-
-#define BUFFER_SIZE 1000
+#define BUFFER_SIZE 4096
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -18,6 +17,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->graphViewOscilloscope->setScene(new QGraphicsScene(ui->graphViewOscilloscope));
+    ui->graphViewImage->setScene(new QGraphicsScene(ui->graphViewImage));
+    ui->graphViewImage->scale(3,2);
 
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(timerTimeout()));
@@ -47,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
         qDebug() << "I need help to make right choice";
         exit(2);
     }
+    //device->setBaudRate(AbstractSerial::BaudRate9600);
     device->setDeviceName(devicePath);
 
     if(!device->open(QIODevice::ReadWrite | QIODevice::Unbuffered)){
@@ -55,6 +57,7 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
     timer->setInterval(1000);
+    timer->start();
 }
 
 MainWindow::~MainWindow()
@@ -78,45 +81,77 @@ void MainWindow::buttonStartStop()
 {
     if(timer->isActive()){
         timer->stop();
+        qDebug() << "buttonStartStop(): timer stopped";
     }else{
         timer->start();
+        qDebug() << "buttonStartStop(): timer started";
     }
 }
 
 
 void MainWindow::timerTimeout()
 {
-    qDebug() << "timerTimeout()";
-
     bool result = device->putChar(0xf0);
     if(result == false){
         qDebug() << "timerTimeout(): device->putChar(0xf0) fail";
         return;
     }
 
-    QByteArray ba;
+    QByteArray rawSignalBuffer;
+    QList<QByteArray *> videoBuffer;
     if(device->waitForReadyRead(100)){
-        ba.clear();
-        ba = device->read(BUFFER_SIZE);
+        rawSignalBuffer.clear();
+        rawSignalBuffer = device->read(BUFFER_SIZE);
 
-        // Visualize
+        int lines = 0;
+        int columns = 0;
+        QByteArray *ba = new QByteArray(); // temp QByteArray for video line
+
+        // Visualize raw signal
         ui->graphViewOscilloscope->scene()->clear();
-        int num = 0;
-        int num_max = 0;
-        for(int i=0; i<BUFFER_SIZE; i++){
-            ui->graphViewOscilloscope->scene()->addLine(i, 0, i, -(ba[i] & 0xff));
-            if(ba[i] == 1){
-                num++;
-            }else{
-                if(num > num_max){
-                    qDebug() << num;
-                    num_max = num;
-                }
-                num = 0;
+        for(int i=0; i<BUFFER_SIZE-1; i++){
+            int prev = rawSignalBuffer[i]   & 0xff;
+            int now  = rawSignalBuffer[i+1] & 0xff;
+            ui->graphViewOscilloscope->scene()->addLine(i, -prev, i, -now);
+
+            ba->append(prev);
+            columns++;
+
+            if (prev == 1 && now != 1){
+                lines++;
+                qDebug() << "  columns =" << columns;
+
+                videoBuffer.append(ba);
+                ba = new QByteArray();
+                columns = 0;
             }
-        }        
+        }
+        qDebug() << "lines =" << lines;
+
+        ui->graphViewImage->scene()->clear();
+        QImage im(32, lines, QImage::Format_RGB32);
+        for(int line=0; line<lines; line++){
+            for(int c=0; c < 32 && c<videoBuffer[line]->length(); c++){
+                int gray = videoBuffer[line]->at(c) & 0xff;
+                int rgb = (gray << 16) | (gray << 8) | (gray); //0xffRRGGBB
+                im.setPixel(c, line, rgb);
+            }
+        }
+        ui->graphViewImage->scene()->addPixmap(QPixmap::fromImage(im));
         repaint();
     }else{
         qDebug() << "waitForReadyRead() fail";
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

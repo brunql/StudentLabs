@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sun Oct 3 11:17:17 2010
+** Created: Sun Oct 3 11:36:43 2010
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -90,7 +90,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Lab #11. \320\236\321\206\320\270\321\204\321\200\320\276\320\262\320\272\320\260 \320\260\320\275\320\260\320\273\320\276\320\263\320\276\320\262\320\276\320\263\320\276 \320\262\320\270\320\264\320\265\320\276 \321\201\320\270\320\263\320\275\320\260\320\273\320\260 \321\201 \320\272\320\260\320\274\320\265\321\200\321\213", 0, QApplication::UnicodeUTF8));
         pushButtonStartStop->setText(QApplication::translate("MainWindow", "Start / Stop", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
