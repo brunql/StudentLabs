@@ -4,8 +4,7 @@
 #include <QtCore>
 #include <QMainWindow>
 
-#include <abstractserial.h>
-#include <iostream>
+#include "cameradevice.h"
 
 
 namespace Ui {
@@ -18,20 +17,19 @@ public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+public slots:
+    void graphOscill_AddPath(QPainterPath *path);
+    void graphImage_AddImage(QImage *im);
+
 protected:
     void changeEvent(QEvent *e);
 
 private slots:
-    void timerTimeout();
     void buttonStartStop();
 
 private:
     Ui::MainWindow *ui;
-    QTimer *timer;
-
-    AbstractSerial *device;
-
-
+    CameraDevice *camDevice;
 };
 
 #endif // MAINWINDOW_H
