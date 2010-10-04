@@ -7,7 +7,7 @@
 
 #include "cameradevice.h"
 
-#define BUFFER_SIZE 2574
+#define BUFFER_SIZE 1774
 
 
 CameraDevice::CameraDevice(int time) : QThread()
@@ -69,7 +69,6 @@ void CameraDevice::run(){
             rawSignalBuffer = device->read(BUFFER_SIZE);
 
             int lines = 0;
-            int columns = 0;
             QByteArray *ba = new QByteArray(); // temp QByteArray for video line
 
             // Visualize raw signal
@@ -81,18 +80,14 @@ void CameraDevice::run(){
                 path->lineTo(i, now);
 
                 ba->append(prev);
-                //            columns++;
-
                 if (prev == 1 && now != 1){
-                    lines++;
-                    //                qDebug() << "  columns =" << columns;
-
-                    videoBuffer.append(ba);
+                    if(ba->length() >= 20){
+                        videoBuffer.append(ba);
+                        lines++;
+                    }
                     ba = new QByteArray();
-                    columns = 0;
                 }
             }
-            //        qDebug() << "lines =" << lines;
 
             emit graphOscill_NewPath(path);
 

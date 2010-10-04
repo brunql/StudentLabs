@@ -26,6 +26,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(camDevice, SIGNAL(graphOscill_NewPath(QPainterPath*)), this, SLOT(graphOscill_AddPath(QPainterPath*)));
     connect(camDevice, SIGNAL(graphImage_NewImage(QImage*)), this, SLOT(graphImage_AddImage(QImage*)));
     ui->graphViewOscilloscope->scale(1, -1);
+
+
 }
 
 MainWindow::~MainWindow()
