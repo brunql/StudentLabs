@@ -7,7 +7,7 @@
 
 #include "cameradevice.h"
 
-#define BUFFER_SIZE 1860
+#define BUFFER_SIZE 2574
 
 
 CameraDevice::CameraDevice(int time) : QThread()
@@ -54,9 +54,7 @@ CameraDevice::CameraDevice(int time) : QThread()
 
 
 void CameraDevice::run(){
-    while(loop){
-
-        qDebug() << QThread::currentThread();
+    while(loop){     
 
         bool result = device->putChar(0xf0);
         if(result == false){
@@ -76,11 +74,11 @@ void CameraDevice::run(){
 
             // Visualize raw signal
             QPainterPath *path = new QPainterPath();
-            path->moveTo(0, rawSignalBuffer[0]   & 0xff);
+            path->moveTo(0, rawSignalBuffer[0] & 0xff);
             for(int i=0; i<BUFFER_SIZE-1; i++){
                 int prev = rawSignalBuffer[i]   & 0xff;
                 int now  = rawSignalBuffer[i+1] & 0xff;
-                path->lineTo(i, -now);
+                path->lineTo(i, now);
 
                 ba->append(prev);
                 //            columns++;
@@ -100,6 +98,7 @@ void CameraDevice::run(){
 
 
             QImage *im = new QImage(32, lines, QImage::Format_RGB32);
+            im->fill(0);
             for(int line=0; line<lines; line++){
                 for(int c=0; c < 32 && c<videoBuffer[line]->length(); c++){
                     int gray = videoBuffer[line]->at(c) & 0xff;

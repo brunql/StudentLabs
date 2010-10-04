@@ -20,11 +20,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->graphViewImage->setScene(new QGraphicsScene(ui->graphViewImage));
     //QTransform matrix = ui->graphViewImage->transform();
 
-    camDevice = new CameraDevice(1000);
+    camDevice = new CameraDevice(1);
 
     connect(ui->pushButtonStartStop, SIGNAL(clicked()), this, SLOT(buttonStartStop()));
     connect(camDevice, SIGNAL(graphOscill_NewPath(QPainterPath*)), this, SLOT(graphOscill_AddPath(QPainterPath*)));
     connect(camDevice, SIGNAL(graphImage_NewImage(QImage*)), this, SLOT(graphImage_AddImage(QImage*)));
+    ui->graphViewOscilloscope->scale(1, -1);
 }
 
 MainWindow::~MainWindow()
@@ -67,8 +68,17 @@ void MainWindow::graphOscill_AddPath(QPainterPath *path)
 
 void MainWindow::graphImage_AddImage(QImage *im)
 {
-    ui->graphViewImage->scene()->clear();
-    ui->graphViewImage->scene()->addPixmap(QPixmap::fromImage(*im));
+    int imScaledWidth = im->width()*ui->horSliderScale->value();
+    int imScaledHeight = im->height()*ui->horSliderScale->value();
+
+    ui->graphViewImage->scene()->clear();    
+    ui->graphViewImage->scene()->addPixmap(
+            QPixmap::fromImage(
+                        im->scaled(imScaledWidth, imScaledHeight, Qt::IgnoreAspectRatio)
+                    )
+            )->setPos(0, 0);
+    ui->labelScaleXY->setText(QString::number(imScaledWidth) + "x" + QString::number(imScaledHeight));
+
     repaint();
 }
 
