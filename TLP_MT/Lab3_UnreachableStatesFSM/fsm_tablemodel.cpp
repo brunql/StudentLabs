@@ -54,6 +54,7 @@ QVariant FSM_TableModel::data(const QModelIndex &index, int role) const
     }else{
         qDebug() << "Error in QVariant FSM_TableModel::data(const QModelIndex &index, int role) const: index.column() ==" << index.column();        
     }
+    qDebug() << "Return empty data";
     return QVariant();
 }
 
@@ -62,6 +63,11 @@ QVariant FSM_TableModel::headerData(int section, Qt::Orientation orientation, in
     if(role != 0){
         return QVariant();
     }
+
+    if(section >= fsm.count()){
+        return QVariant();
+    }
+
 
     // section == index row or column
     if(orientation == Qt::Horizontal){ // rows
@@ -95,21 +101,47 @@ QString FSM_TableModel::FSM(QString stream)
     return result;
 }
 
-void FSM_TableModel::removeUnreachableStates()
+QList<int> *FSM_TableModel::findReachableStates(QList<int> *reachableStates, int state)
 {
-    qDebug() << "TODO: removeUnreachableStates()";
+    int cmdCheckMe = fsm[state]->co1->cmd;
+    if(reachableStates->indexOf(cmdCheckMe) == -1){
+        reachableStates->append(cmdCheckMe);
+        reachableStates = findReachableStates(reachableStates, cmdCheckMe);
+    }
 
+    cmdCheckMe = fsm[state]->co2->cmd;
+    if(reachableStates->indexOf(cmdCheckMe) == -1){
+        reachableStates->append(cmdCheckMe);
+        reachableStates = findReachableStates(reachableStates, cmdCheckMe);
+    }
+    return reachableStates;
 }
 
+void FSM_TableModel::removeUnreachableStates()
+{
+    const int firstState = 0;
 
+    QList<int> *reachableStates = new QList<int>();
+    reachableStates->append(firstState);
 
+    reachableStates = findReachableStates(reachableStates, firstState);
+    if(reachableStates->count() < fsm.count()){
+        // not all FSM states are reachable
+        for(int state=0; state<fsm.count(); state++){
+            if(reachableStates->indexOf(state) == -1){
+                fsm.removeAt(state);
+            }
+        }
+    }else if(reachableStates->count() == fsm.count()){
+        qDebug() << "All FSM states are reachable";
+    }else{
+        qDebug() << "Error in void FSM_TableModel::removeUnreachableStates(): reachableStates->count() > fsm.count()."
+                << "reachableStates->count() ==" << reachableStates->count();
+    }
 
-
-
-
-
-
-
+    emit this->dataChanged(QModelIndex(), QModelIndex());
+    emit this->headerDataChanged(Qt::Vertical, 0, fsm.count());
+}
 
 
 

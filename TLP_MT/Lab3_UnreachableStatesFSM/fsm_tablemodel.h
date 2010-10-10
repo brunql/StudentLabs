@@ -32,6 +32,8 @@ public:
     int lastInputBitFSM;
 
 private:
+    QList<int> *findReachableStates(QList<int> *reachableStates, int state);
+
     QList<FsmCmdLine*> fsm;
 
 };
