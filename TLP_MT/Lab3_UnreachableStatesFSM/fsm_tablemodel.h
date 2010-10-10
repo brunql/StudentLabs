@@ -10,6 +10,7 @@
 #define FSM_TABLEMODEL_H
 
 #include "QAbstractTableModel"
+#include "fsmcmdline.h"
 
 class FSM_TableModel : public QAbstractTableModel
 {
@@ -30,11 +31,9 @@ public:
     int lastStateFSM;
     int lastInputBitFSM;
 
-
 private:
-    static int robot[5][2][2];
-    static const int NEXT_STATE = 0;
-    static const int OUT_VALUE  = 1;
+    QList<FsmCmdLine*> fsm;
+
 };
 
 #endif // KA_TABLEMODEL_H

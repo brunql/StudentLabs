@@ -9,7 +9,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include "QDebug"
+#include "QtGui"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -47,6 +47,11 @@ void MainWindow::changeEvent(QEvent *e)
 void MainWindow::showEvent(QShowEvent *)
 {
     resizeEvent(0);
+    int screenW = QApplication::desktop()->screenGeometry().width();
+    int screenH = QApplication::desktop()->screenGeometry().height();
+
+    this->move( screenW/2 - this->width()/2,
+            screenH/2 - this->height()/2 );
 }
 
 void MainWindow::resizeEvent(QResizeEvent *)

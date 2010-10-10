@@ -5,8 +5,10 @@ TARGET = Lab3_UnreachableStatesFSM
 SOURCES += main.cpp \
     mainwindow.cpp \
     fsm_tablemodel.cpp \
-    fsmcmd.cpp
+    fsmcmd.cpp \
+    fsmcmdline.cpp
 HEADERS += mainwindow.h \
     fsm_tablemodel.h \
-    fsmcmd.h
+    fsmcmd.h \
+    fsmcmdline.h
 FORMS += mainwindow.ui
