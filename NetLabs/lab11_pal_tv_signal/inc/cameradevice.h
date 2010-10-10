@@ -12,6 +12,9 @@
 #include <QObject>
 #include <abstractserial.h>
 
+#include "usb.h"
+#include "hiddata.h"
+#include "usbconfig.h"
 #include "timeevaluations.h"
 
 class CameraDevice : public QThread, public QRunnable
@@ -24,6 +27,12 @@ public:
     void setLoop(bool loop);
     bool getLoop();
 
+    // USB HID functions
+    bool openDevice();
+    bool readDataFromDevice();
+    bool writeBufferToDevice();
+    QString usbErrorMessage(int errCode);
+
 signals:
     void graphOscill_NewPath(QPainterPath *path);
     void graphImage_NewImage(QImage *im);
@@ -34,6 +43,12 @@ private:
 
     AbstractSerial *device;    
     TimeEvaluations *timeEval;
+
+    usb_dev_handle *usbDeviceCamera; // USB HID device
+
+    // USB HID buffers
+    char read_buffer[1 + 7];    /* 0-system, 1..7-data */
+    char write_buffer[1 + 7];   /* 0-system, 1..7-data */
 };
 
 #endif // CAMERADEVICE_H

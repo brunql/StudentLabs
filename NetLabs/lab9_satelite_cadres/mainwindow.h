@@ -23,6 +23,7 @@ public:
 
 protected:
     void changeEvent(QEvent *e);
+    void wheelEvent(QWheelEvent *);
 
 private slots:
     void lineEdit_Changing();

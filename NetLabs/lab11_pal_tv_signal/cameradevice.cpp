@@ -10,6 +10,7 @@
 #define BUFFER_SIZE 1774
 
 
+
 CameraDevice::CameraDevice(int time) : QThread()
 {
     this->loop = false;
@@ -121,3 +122,89 @@ bool CameraDevice::getLoop()
 {
     return this->loop;
 }
+
+
+///
+/// USB HID
+///
+bool CameraDevice::openDevice()
+{
+    usbDeviceCamera = NULL;
+
+    const char * vendorName  = "brunql.github";
+    const char * productName = "CameraDigitizer";
+    int vid = USB_VENDOR_ID;
+    int pid = USB_PROD_ID;
+
+    int err;
+
+    if((err = usbhidOpenDevice(&usbDeviceCamera, vid, NULL, pid, NULL, 1)) != 0){
+        qWarning() << "Error finding " << productName << ": " << usbErrorMessage(err);
+        return false;
+    }
+    qDebug("%s %s (PID: 0x%04x; VID: 0x%04x) opened.", productName, vendorName, pid, vid);
+    return true;
+}
+
+bool CameraDevice::readDataFromDevice()
+{
+    int result = 0;
+    char buff[65];
+    memset(buff, 0, sizeof(buff));
+    //memset(read_buffer, 0, sizeof(read_buffer));
+
+    int len = sizeof(buff);
+    //result = usb_get_string_simple(usbDeviceCamera, 0, buff, 256);
+    //qDebug() << "usb_get_string_simple: " << result << usb_strerror();
+    //qDebug() << QString(buff);      
+
+    usbhidGetReport(usbDeviceCamera, 0, buff, &len);
+    qDebug() << buff;
+
+
+    result = usb_control_msg(usbDeviceCamera,
+                             USB_CLASS_HID,
+                             0x0, // GET_REPORT
+                             0x0,
+                             0,
+                             buff, len, 1000);
+    qDebug() << "usb_control_msg: " << result << usb_strerror();
+    qDebug() << QString(buff);
+
+
+
+//    int err;
+//
+//    int len = sizeof(read_buffer);
+//    if((err = usbhidGetReport(dev, 0, read_buffer, &len)) != 0){
+//        qWarning() << "error reading data:" << usbErrorMessage(err);
+//        return false;
+//    }
+//    return true;
+}
+
+bool CameraDevice::writeBufferToDevice()
+{
+    int err;
+
+    if((err = usbhidSetReport(usbDeviceCamera, write_buffer, sizeof(write_buffer), 500)) != 0){   /* add a dummy report ID */
+        qWarning() << "error writing data:" << usbErrorMessage(err);
+        return false;
+    }
+    return true;
+}
+
+QString CameraDevice::usbErrorMessage(int errCode)
+{
+    QString result = "";
+    switch(errCode){
+    case USBOPEN_ERR_ACCESS:      result = "Access to device denied"; break;
+    case USBOPEN_ERR_NOTFOUND:    result = "The specified device was not found"; break;
+    case USBOPEN_ERR_IO:          result = "Communication error with device"; break;
+    default:
+        result = result.sprintf("Unknown USB error %d", errCode);
+        break;
+    }
+    return result;
+}
+

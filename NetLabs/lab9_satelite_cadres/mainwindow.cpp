@@ -241,3 +241,10 @@ void MainWindow::lineEdit_Changing()
     ui->graphicsView->scene()->invalidate();
     ui->graphicsView->scene()->update(ui->graphicsView->scene()->sceneRect());
 }
+
+
+void MainWindow::wheelEvent(QWheelEvent *)
+{
+    ui->graphicsView->scene()->invalidate();
+    ui->graphicsView->scene()->update(ui->graphicsView->scene()->sceneRect());
+}
