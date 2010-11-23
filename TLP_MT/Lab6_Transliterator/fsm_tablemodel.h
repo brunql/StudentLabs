@@ -3,14 +3,13 @@
  *
  *  Created on: 13.09.2010
  *      Author: brunql
- *     Project: FSM
+ *     Project: Lab1. Simple FSM
  */
 
 #ifndef FSM_TABLEMODEL_H
 #define FSM_TABLEMODEL_H
 
 #include "QAbstractTableModel"
-#include "fsmcmdline.h"
 
 class FSM_TableModel : public QAbstractTableModel
 {
@@ -19,8 +18,6 @@ class FSM_TableModel : public QAbstractTableModel
 public:
     FSM_TableModel(QObject *parent);
     QString FSM(QString stream);
-    void removeUnreachableStates();
-    void minimizeFSM();
 
 protected:
     virtual int rowCount(const QModelIndex &parent) const;
@@ -30,13 +27,13 @@ protected:
 
 public:
     int lastStateFSM;
-    int lastInputBitFSM;    
+    int lastInputBitFSM;
+
 
 private:
-    QList<int> *findSameStates(QList<int> *reachableStates, int state);
-
-    QList<FsmCmdLine*> fsm;
-
+    static const int fsm[5][2][2];
+    static const int NEXT_STATE = 0;
+    static const int OUT_VALUE  = 1;
 };
 
 #endif // KA_TABLEMODEL_H

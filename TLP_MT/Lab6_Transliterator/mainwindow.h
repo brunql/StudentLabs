@@ -3,7 +3,7 @@
  *
  *  Created on: 13.09.2010
  *      Author: brunql
- *     Project: FSM
+ *     Project: Lab1. Simple FSM
  */
 
 #ifndef MAINWINDOW_H
@@ -25,13 +25,9 @@ public:
 protected:
     void changeEvent(QEvent *e);
     void resizeEvent(QResizeEvent *);
-    void showEvent(QShowEvent *);
 
 private slots:
-    void lineInputEditing();
-    void lineInputDigitsEditing();
-    void btnRemoveUnreachableStatesClicked();
-    void btnMinimizeClicked();
+    void lineEditing();
 
 private:
     Ui::MainWindow *ui;

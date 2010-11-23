@@ -21,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->lineEditInput, SIGNAL(textChanged(QString)), this, SLOT(lineInputEditing()));
     connect(ui->lineEditInputDigits, SIGNAL(textChanged(QString)), this, SLOT(lineInputDigitsEditing()));
     connect(ui->btnRemoveUnreachableStates, SIGNAL(clicked()), this, SLOT(btnRemoveUnreachableStatesClicked()));
+    connect(ui->btnMinimize, SIGNAL(clicked()), this, SLOT(btnMinimizeClicked()));
 
     fsm_table = new FSM_TableModel(this);
     ui->tableView->setModel(fsm_table);
@@ -154,7 +155,10 @@ void MainWindow::btnRemoveUnreachableStatesClicked()
     fsm_table->removeUnreachableStates();
 }
 
-
+void MainWindow::btnMinimizeClicked()
+{
+    fsm_table->minimizeFSM();
+}
 
 
 

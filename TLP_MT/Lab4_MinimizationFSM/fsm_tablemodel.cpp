@@ -101,18 +101,18 @@ QString FSM_TableModel::FSM(QString stream)
     return result;
 }
 
-QList<int> *FSM_TableModel::findReachableStates(QList<int> *reachableStates, int state)
+QList<int> *FSM_TableModel::findSameStates(QList<int> *reachableStates, int state)
 {
     int cmdCheckMe = fsm[state]->co1->cmd;
     if(reachableStates->indexOf(cmdCheckMe) == -1){
         reachableStates->append(cmdCheckMe);
-        reachableStates = findReachableStates(reachableStates, cmdCheckMe);
+        reachableStates = findSameStates(reachableStates, cmdCheckMe);
     }
 
     cmdCheckMe = fsm[state]->co2->cmd;
     if(reachableStates->indexOf(cmdCheckMe) == -1){
         reachableStates->append(cmdCheckMe);
-        reachableStates = findReachableStates(reachableStates, cmdCheckMe);
+        reachableStates = findSameStates(reachableStates, cmdCheckMe);
     }
     return reachableStates;
 }
@@ -124,7 +124,7 @@ void FSM_TableModel::removeUnreachableStates()
     QList<int> *reachableStates = new QList<int>();
     reachableStates->append(firstState);
 
-    reachableStates = findReachableStates(reachableStates, firstState);
+    reachableStates = findSameStates(reachableStates, firstState);
     if(reachableStates->count() < fsm.count()){
         // not all FSM states are reachable
         for(int state=0; state<fsm.count(); state++){
@@ -143,7 +143,30 @@ void FSM_TableModel::removeUnreachableStates()
     emit this->headerDataChanged(Qt::Vertical, 0, fsm.count());
 }
 
+void FSM_TableModel::minimizeFSM()
+{
+    const int firstState = 0;
 
+    QList<int> *minimizeStates = new QList<int>();
+    minimizeStates->append(firstState);
+
+    minimizeStates = findSameStates(minimizeStates, firstState);
+    if(minimizeStates->count() < fsm.count()){        
+        for(int state=0; state<fsm.count(); state++){
+            if(minimizeStates->indexOf(state) == -1){
+                fsm.removeAt(state);
+            }
+        }
+    }else if(minimizeStates->count() == fsm.count()){
+        qDebug() << "FSM already minimized!";
+    }else{
+        qDebug() << "Error in void FSM_TableModel::minimizeFSM(): minimizeStates->count() > fsm.count()."
+                << "minimizeStates->count() ==" << minimizeStates->count();
+    }
+    // Update table
+    emit this->dataChanged(QModelIndex(), QModelIndex());
+    emit this->headerDataChanged(Qt::Vertical, 0, fsm.count());
+}
 
 
 

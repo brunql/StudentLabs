@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>409</width>
-    <height>671</height>
+    <width>370</width>
+    <height>446</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,32 +18,7 @@
     <item>
      <widget class="QLabel" name="label_2">
       <property name="text">
-       <string>Lab #4. Минимизация конечных автоматов</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_4">
-      <property name="text">
-       <string>Входные десятичные данные:</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="lineEditInputDigits"/>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_7">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>↓</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <string>Lab #5. Структурный синтез конечных автоматов</string>
       </property>
      </widget>
     </item>
@@ -55,11 +30,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEditInput">
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-     </widget>
+     <widget class="QLineEdit" name="lineEditInput"/>
     </item>
     <item>
      <widget class="QLabel" name="label">
@@ -100,20 +71,6 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="btnRemoveUnreachableStates">
-      <property name="text">
-       <string>Удалить недостижимые состояния</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnMinimize">
-      <property name="text">
-       <string>Минимизировать</string>
-      </property>
-     </widget>
-    </item>
-    <item>
      <widget class="QLabel" name="label_3">
       <property name="font">
        <font>
@@ -137,35 +94,6 @@
     </item>
     <item>
      <widget class="QLineEdit" name="lineEditOutput">
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_9">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>↓</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_8">
-      <property name="text">
-       <string>Выходные hex данные:</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="lineEditOutputDigits">
       <property name="readOnly">
        <bool>true</bool>
       </property>
