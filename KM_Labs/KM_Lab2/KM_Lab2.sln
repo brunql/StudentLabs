@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KM_Lab2", "KM_Lab2\KM_Lab2.csproj", "{C3016308-29FA-4675-93F1-465DA1811480}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3016308-29FA-4675-93F1-465DA1811480}.Debug|x86.ActiveCfg = Debug|x86
+		{C3016308-29FA-4675-93F1-465DA1811480}.Debug|x86.Build.0 = Debug|x86
+		{C3016308-29FA-4675-93F1-465DA1811480}.Release|x86.ActiveCfg = Release|x86
+		{C3016308-29FA-4675-93F1-465DA1811480}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

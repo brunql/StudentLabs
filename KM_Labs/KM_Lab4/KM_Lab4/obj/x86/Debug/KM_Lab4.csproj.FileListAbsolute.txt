@@ -1,0 +1,9 @@
+C:\KM\KM_Lab4\KM_Lab4\bin\Debug\KM_Lab4.exe
+C:\KM\KM_Lab4\KM_Lab4\bin\Debug\KM_Lab4.pdb
+C:\KM\KM_Lab4\KM_Lab4\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\KM\KM_Lab4\KM_Lab4\obj\x86\Debug\KM_Lab4.MainForm.resources
+C:\KM\KM_Lab4\KM_Lab4\obj\x86\Debug\KM_Lab4.Properties.Resources.resources
+C:\KM\KM_Lab4\KM_Lab4\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\KM\KM_Lab4\KM_Lab4\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\KM\KM_Lab4\KM_Lab4\obj\x86\Debug\KM_Lab4.exe
+C:\KM\KM_Lab4\KM_Lab4\obj\x86\Debug\KM_Lab4.pdb

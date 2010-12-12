@@ -1,0 +1,22 @@
+C:\Documents and Settings\student\Мои документы\Visual Studio 2010\Projects\brunql\KM_Lab1\KM_Lab1\bin\Debug\KM_Lab1.exe
+C:\Documents and Settings\student\Мои документы\Visual Studio 2010\Projects\brunql\KM_Lab1\KM_Lab1\bin\Debug\KM_Lab1.pdb
+C:\Documents and Settings\student\Мои документы\Visual Studio 2010\Projects\brunql\KM_Lab1\KM_Lab1\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\student\Мои документы\Visual Studio 2010\Projects\brunql\KM_Lab1\KM_Lab1\obj\x86\Debug\KM_Lab1.Form1.resources
+C:\Documents and Settings\student\Мои документы\Visual Studio 2010\Projects\brunql\KM_Lab1\KM_Lab1\obj\x86\Debug\KM_Lab1.Properties.Resources.resources
+C:\Documents and Settings\student\Мои документы\Visual Studio 2010\Projects\brunql\KM_Lab1\KM_Lab1\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\student\Мои документы\Visual Studio 2010\Projects\brunql\KM_Lab1\KM_Lab1\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Documents and Settings\student\Мои документы\Visual Studio 2010\Projects\brunql\KM_Lab1\KM_Lab1\obj\x86\Debug\KM_Lab1.exe
+C:\Documents and Settings\student\Мои документы\Visual Studio 2010\Projects\brunql\KM_Lab1\KM_Lab1\obj\x86\Debug\KM_Lab1.pdb
+C:\Documents and Settings\student\Мои документы\Visual Studio 2010\Projects\brunql\KM_Lab1\KM_Lab1\obj\x86\Debug\KM_Lab1.Form2.resources
+C:\Documents and Settings\student\Мои документы\Visual Studio 2010\Projects\brunql\KM_Lab1\KM_Lab1\obj\x86\Debug\KM_Lab1.Form3.resources
+Z:\c#\KM\KM_Lab1\KM_Lab1\obj\x86\Debug\KM_Lab1.exe
+Z:\c#\KM\KM_Lab1\KM_Lab1\obj\x86\Debug\KM_Lab1.pdb
+Z:\c#\KM\KM_Lab1\KM_Lab1\obj\x86\Debug\ResolveAssemblyReference.cache
+Z:\c#\KM\KM_Lab1\KM_Lab1\obj\x86\Debug\KM_Lab1.Form1.resources
+Z:\c#\KM\KM_Lab1\KM_Lab1\obj\x86\Debug\KM_Lab1.Form2.resources
+Z:\c#\KM\KM_Lab1\KM_Lab1\obj\x86\Debug\KM_Lab1.Form3.resources
+Z:\c#\KM\KM_Lab1\KM_Lab1\obj\x86\Debug\KM_Lab1.Properties.Resources.resources
+Z:\c#\KM\KM_Lab1\KM_Lab1\obj\x86\Debug\GenerateResource.read.1.tlog
+Z:\c#\KM\KM_Lab1\KM_Lab1\obj\x86\Debug\GenerateResource.write.1.tlog
+Z:\c#\KM\KM_Lab1\KM_Lab1\bin\Debug\KM_Lab1.exe
+Z:\c#\KM\KM_Lab1\KM_Lab1\bin\Debug\KM_Lab1.pdb
